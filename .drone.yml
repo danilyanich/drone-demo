@@ -14,6 +14,20 @@ pipeline:
       branch: ["master"]
       event: [push]
 
+  run-lint:
+    image: plugins/docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    tags:
+      - latest
+      - ${DRONE_BRANCH}
+    dockerfile: ./Dockerfile
+    context: ./
+    commands:
+      - npm test
+    when:
+      event: [pull_request]
+
   deploy-app:
     image: williamyeh/ansible:ubuntu16.04
     secrets: [ ssh_key, docker_username, docker_password, docker_email ]
