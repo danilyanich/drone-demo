@@ -6,4 +6,4 @@ app.use(async (ctx) => {
   ctx.body = 'Dan Krachkouski';
 });
 
-app.listen(3000, () => console.log('app.is.running'));
+app.listen(3000);
