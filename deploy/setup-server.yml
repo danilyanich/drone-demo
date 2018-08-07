@@ -1,0 +1,9 @@
+---
+- name: Setup server
+  hosts: app
+  remote_user: root
+  become: true
+  gather_facts: true
+
+  roles:
+    - angstwad.docker_ubuntu

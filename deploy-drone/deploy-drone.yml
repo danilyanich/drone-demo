@@ -7,8 +7,8 @@
   vars_files:
     - vars/main.yml
 
-  # roles:
-  #   - angstwad.docker_ubuntu
+  roles:
+    - angstwad.docker_ubuntu
 
   tasks:
     - name: pull drone docker image
@@ -41,11 +41,10 @@
           DRONE_OPEN: 'true'
           DRONE_HOST: '{{ drone_host }}'
           DRONE_GITHUB: 'true'
+          DRONE_ADMIN: '{{ drone_admins }}'
           DRONE_GITHUB_CLIENT: '{{ drone_github_client }}'
           DRONE_GITHUB_SECRET: '{{ drone_github_secret }}'
           DRONE_SECRET: '{{ drone_secret }}'
-        # networks:
-        #   - name: '{{ network_name }}'
 
     - name: run drone agent
       docker_container:
@@ -63,8 +62,6 @@
           DRONE_SERVER: drone-server:9000
           DRONE_DEBUG: 'true'
           DRONE_SECRET: '{{ drone_secret }}'
-        # networks:
-        #   - name: '{{ network_name }}'
 
     - name: create drone docker network
       docker_network:
