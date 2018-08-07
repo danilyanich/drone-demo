@@ -1,0 +1,9 @@
+network_name: drone-isolated-network
+
+drone_version: 0.8
+
+drone_host: http://drone.drone-demo.pw
+drone_secret: hTirsXmrY4YsyK79ELgB
+
+drone_github_client: 4395e1e8a4dc5e26818c
+drone_github_secret: e1b3450d1e703c6393a318cce239af17f8799502

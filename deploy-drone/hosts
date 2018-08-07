@@ -1,0 +1,1 @@
+drone ansible_ssh_host=178.128.246.154 ansible_user=root ansible_python_interpreter=/usr/bin/python3
