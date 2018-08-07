@@ -1,0 +1,15 @@
+pipeline:
+  publish-docker-image:
+    image: plugins/docker
+    secrets: [ docker_username, docker_password ]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    repo: danilyanich/drone-demo-app
+    tags:
+      - latest
+      - ${DRONE_BRANCH}
+    dockerfile: ./Dockerfile
+    context: ./
+    when:
+      branch: ["master"]
+      event: [push]
